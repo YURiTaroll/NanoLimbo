@@ -1,8 +1,8 @@
-name: Build NanoLimbo and upload jar to Release
+name: Build ws branches and Release
 
 on:
   push:
-    branches: [ main ]
+    branches: [ ws ]
   workflow_dispatch:
 
 jobs:
@@ -49,9 +49,9 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "server.jar"
-          tag: ${{ github.ref_name }}
-          name: "NanoLimbo ${{ github.ref_name }}"
+          tag: "ws-latest"
+          name: "NanoLimbo ws-latest"
           token: ${{ secrets.GITHUB_TOKEN }}
           allowUpdates: true
           replacesArtifacts: true
-          body: "Automated release from workflow run #${{ github.run_number }}"
+          body: "Automated ws branch build #${{ github.run_number }}"
